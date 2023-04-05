@@ -1,0 +1,464 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DDA109C029CC848E00B2C439 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109BF29CC848E00B2C439 /* AppDelegate.swift */; };
+		DDA109C229CC848E00B2C439 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109C129CC848E00B2C439 /* SceneDelegate.swift */; };
+		DDA109C429CC848E00B2C439 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109C329CC848E00B2C439 /* MainTabBarViewController.swift */; };
+		DDA109C929CC848F00B2C439 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDA109C829CC848F00B2C439 /* Assets.xcassets */; };
+		DDA109CC29CC848F00B2C439 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA109CA29CC848F00B2C439 /* LaunchScreen.storyboard */; };
+		DDA109D529CC85FB00B2C439 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109D429CC85FB00B2C439 /* HomeViewController.swift */; };
+		DDA109D729CC860900B2C439 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109D629CC860900B2C439 /* SearchViewController.swift */; };
+		DDA109D929CCB19700B2C439 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109D829CCB19700B2C439 /* CollectionViewCell.swift */; };
+		DDA109DB29D2C29500B2C439 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109DA29D2C29500B2C439 /* CharacterModel.swift */; };
+		DDA109DD29D2C2F700B2C439 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109DC29D2C2F700B2C439 /* TableViewCell.swift */; };
+		DDA109E029D2F3D000B2C439 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109DF29D2F3D000B2C439 /* NetworkManager.swift */; };
+		DDA109E329D2F41E00B2C439 /* CharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109E229D2F41E00B2C439 /* CharactersModel.swift */; };
+		DDA109E529D2F44900B2C439 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109E429D2F44900B2C439 /* URLManager.swift */; };
+		DDA109E929DDB61200B2C439 /* CharacterDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109E829DDB61200B2C439 /* CharacterDescriptionViewController.swift */; };
+		DDA109EB29DDB7DF00B2C439 /* HeroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109EA29DDB7DF00B2C439 /* HeroModel.swift */; };
+		DDA109EE29DDF8A500B2C439 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = DDA109ED29DDF8A500B2C439 /* SDWebImage */; };
+		DDA109F029DDF8A500B2C439 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DDA109EF29DDF8A500B2C439 /* SDWebImageMapKit */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DDA109BC29CC848E00B2C439 /* SouthParkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SouthParkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDA109BF29CC848E00B2C439 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DDA109C129CC848E00B2C439 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		DDA109C329CC848E00B2C439 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		DDA109C829CC848F00B2C439 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DDA109CB29CC848F00B2C439 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DDA109CD29CC848F00B2C439 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDA109D429CC85FB00B2C439 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DDA109D629CC860900B2C439 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		DDA109D829CCB19700B2C439 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		DDA109DA29D2C29500B2C439 /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		DDA109DC29D2C2F700B2C439 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		DDA109DF29D2F3D000B2C439 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		DDA109E229D2F41E00B2C439 /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
+		DDA109E429D2F44900B2C439 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		DDA109E829DDB61200B2C439 /* CharacterDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDescriptionViewController.swift; sourceTree = "<group>"; };
+		DDA109EA29DDB7DF00B2C439 /* HeroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DDA109B929CC848E00B2C439 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDA109F029DDF8A500B2C439 /* SDWebImageMapKit in Frameworks */,
+				DDA109EE29DDF8A500B2C439 /* SDWebImage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DDA109B329CC848E00B2C439 = {
+			isa = PBXGroup;
+			children = (
+				DDA109BE29CC848E00B2C439 /* SouthParkApp */,
+				DDA109BD29CC848E00B2C439 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DDA109BD29CC848E00B2C439 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DDA109BC29CC848E00B2C439 /* SouthParkApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DDA109BE29CC848E00B2C439 /* SouthParkApp */ = {
+			isa = PBXGroup;
+			children = (
+				DDA109E729DDB5E500B2C439 /* CharacterDescription */,
+				DDA109E629DAA76D00B2C439 /* System */,
+				DDA109E129D2F40400B2C439 /* Models */,
+				DDA109DE29D2F3BC00B2C439 /* Network */,
+				DDA109D329CC85E800B2C439 /* ViewControllers */,
+				DDA109C329CC848E00B2C439 /* MainTabBarViewController.swift */,
+				DDA109CA29CC848F00B2C439 /* LaunchScreen.storyboard */,
+				DDA109CD29CC848F00B2C439 /* Info.plist */,
+			);
+			path = SouthParkApp;
+			sourceTree = "<group>";
+		};
+		DDA109D329CC85E800B2C439 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DDA109D429CC85FB00B2C439 /* HomeViewController.swift */,
+				DDA109D629CC860900B2C439 /* SearchViewController.swift */,
+				DDA109DC29D2C2F700B2C439 /* TableViewCell.swift */,
+				DDA109DA29D2C29500B2C439 /* CharacterModel.swift */,
+				DDA109D829CCB19700B2C439 /* CollectionViewCell.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DDA109DE29D2F3BC00B2C439 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DDA109DF29D2F3D000B2C439 /* NetworkManager.swift */,
+				DDA109E429D2F44900B2C439 /* URLManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		DDA109E129D2F40400B2C439 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DDA109E229D2F41E00B2C439 /* CharactersModel.swift */,
+				DDA109EA29DDB7DF00B2C439 /* HeroModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DDA109E629DAA76D00B2C439 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				DDA109C829CC848F00B2C439 /* Assets.xcassets */,
+				DDA109BF29CC848E00B2C439 /* AppDelegate.swift */,
+				DDA109C129CC848E00B2C439 /* SceneDelegate.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		DDA109E729DDB5E500B2C439 /* CharacterDescription */ = {
+			isa = PBXGroup;
+			children = (
+				DDA109E829DDB61200B2C439 /* CharacterDescriptionViewController.swift */,
+			);
+			path = CharacterDescription;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DDA109BB29CC848E00B2C439 /* SouthParkApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDA109D029CC848F00B2C439 /* Build configuration list for PBXNativeTarget "SouthParkApp" */;
+			buildPhases = (
+				DDA109B829CC848E00B2C439 /* Sources */,
+				DDA109B929CC848E00B2C439 /* Frameworks */,
+				DDA109BA29CC848E00B2C439 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SouthParkApp;
+			packageProductDependencies = (
+				DDA109ED29DDF8A500B2C439 /* SDWebImage */,
+				DDA109EF29DDF8A500B2C439 /* SDWebImageMapKit */,
+			);
+			productName = SouthParkApp;
+			productReference = DDA109BC29CC848E00B2C439 /* SouthParkApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DDA109B429CC848E00B2C439 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					DDA109BB29CC848E00B2C439 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = DDA109B729CC848E00B2C439 /* Build configuration list for PBXProject "SouthParkApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DDA109B329CC848E00B2C439;
+			packageReferences = (
+				DDA109EC29DDF8A500B2C439 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
+			productRefGroup = DDA109BD29CC848E00B2C439 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DDA109BB29CC848E00B2C439 /* SouthParkApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DDA109BA29CC848E00B2C439 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDA109CC29CC848F00B2C439 /* LaunchScreen.storyboard in Resources */,
+				DDA109C929CC848F00B2C439 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DDA109B829CC848E00B2C439 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDA109EB29DDB7DF00B2C439 /* HeroModel.swift in Sources */,
+				DDA109E029D2F3D000B2C439 /* NetworkManager.swift in Sources */,
+				DDA109DB29D2C29500B2C439 /* CharacterModel.swift in Sources */,
+				DDA109DD29D2C2F700B2C439 /* TableViewCell.swift in Sources */,
+				DDA109E929DDB61200B2C439 /* CharacterDescriptionViewController.swift in Sources */,
+				DDA109E329D2F41E00B2C439 /* CharactersModel.swift in Sources */,
+				DDA109E529D2F44900B2C439 /* URLManager.swift in Sources */,
+				DDA109D729CC860900B2C439 /* SearchViewController.swift in Sources */,
+				DDA109C429CC848E00B2C439 /* MainTabBarViewController.swift in Sources */,
+				DDA109D929CCB19700B2C439 /* CollectionViewCell.swift in Sources */,
+				DDA109C029CC848E00B2C439 /* AppDelegate.swift in Sources */,
+				DDA109C229CC848E00B2C439 /* SceneDelegate.swift in Sources */,
+				DDA109D529CC85FB00B2C439 /* HomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DDA109CA29CC848F00B2C439 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DDA109CB29CC848F00B2C439 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DDA109CE29CC848F00B2C439 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DDA109CF29CC848F00B2C439 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DDA109D129CC848F00B2C439 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3NRM82DHAY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SouthParkApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Mike-Prod.SouthParkApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DDA109D229CC848F00B2C439 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3NRM82DHAY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SouthParkApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Mike-Prod.SouthParkApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DDA109B729CC848E00B2C439 /* Build configuration list for PBXProject "SouthParkApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDA109CE29CC848F00B2C439 /* Debug */,
+				DDA109CF29CC848F00B2C439 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DDA109D029CC848F00B2C439 /* Build configuration list for PBXNativeTarget "SouthParkApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDA109D129CC848F00B2C439 /* Debug */,
+				DDA109D229CC848F00B2C439 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DDA109EC29DDF8A500B2C439 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DDA109ED29DDF8A500B2C439 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDA109EC29DDF8A500B2C439 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		DDA109EF29DDF8A500B2C439 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDA109EC29DDF8A500B2C439 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = DDA109B429CC848E00B2C439 /* Project object */;
+}
