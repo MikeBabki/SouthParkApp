@@ -8,7 +8,7 @@
 import Foundation
 
 struct HeroData: Decodable {
-    var data: [DataHero]?
+    var dataHero: [DataHero]?
 }
 struct DataHero: Decodable {
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TableViewCell: UITableViewCell {
     
@@ -22,6 +23,7 @@ class TableViewCell: UITableViewCell {
    lazy var charImage: UIImageView = {
         
         let image = UIImageView()
+       image.image = UIImage(systemName: "pencil")
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         
@@ -36,11 +38,10 @@ class TableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    public func configure(with image: UIImage, and label: String) {
-        self.charImage.image = image
-        self.charNameLabel.text = label
+    public func configure(label: String) {
+        charNameLabel.text = label
+//        charImage.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: "placeholder.png"))
     }
-    
     private func setupUI() {
         self.contentView.addSubview(charImage)
         self.contentView.addSubview(charNameLabel)

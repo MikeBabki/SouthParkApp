@@ -15,7 +15,6 @@
 		DDA109D529CC85FB00B2C439 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109D429CC85FB00B2C439 /* HomeViewController.swift */; };
 		DDA109D729CC860900B2C439 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109D629CC860900B2C439 /* SearchViewController.swift */; };
 		DDA109D929CCB19700B2C439 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109D829CCB19700B2C439 /* CollectionViewCell.swift */; };
-		DDA109DB29D2C29500B2C439 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109DA29D2C29500B2C439 /* CharacterModel.swift */; };
 		DDA109DD29D2C2F700B2C439 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109DC29D2C2F700B2C439 /* TableViewCell.swift */; };
 		DDA109E029D2F3D000B2C439 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109DF29D2F3D000B2C439 /* NetworkManager.swift */; };
 		DDA109E329D2F41E00B2C439 /* CharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109E229D2F41E00B2C439 /* CharactersModel.swift */; };
@@ -37,7 +36,6 @@
 		DDA109D429CC85FB00B2C439 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DDA109D629CC860900B2C439 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		DDA109D829CCB19700B2C439 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		DDA109DA29D2C29500B2C439 /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		DDA109DC29D2C2F700B2C439 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		DDA109DF29D2F3D000B2C439 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DDA109E229D2F41E00B2C439 /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				DDA109D429CC85FB00B2C439 /* HomeViewController.swift */,
 				DDA109D629CC860900B2C439 /* SearchViewController.swift */,
 				DDA109DC29D2C2F700B2C439 /* TableViewCell.swift */,
-				DDA109DA29D2C29500B2C439 /* CharacterModel.swift */,
 				DDA109D829CCB19700B2C439 /* CollectionViewCell.swift */,
 			);
 			path = ViewControllers;
@@ -217,7 +214,6 @@
 			files = (
 				DDA109EB29DDB7DF00B2C439 /* HeroModel.swift in Sources */,
 				DDA109E029D2F3D000B2C439 /* NetworkManager.swift in Sources */,
-				DDA109DB29D2C29500B2C439 /* CharacterModel.swift in Sources */,
 				DDA109DD29D2C2F700B2C439 /* TableViewCell.swift in Sources */,
 				DDA109E929DDB61200B2C439 /* CharacterDescriptionViewController.swift in Sources */,
 				DDA109E329D2F41E00B2C439 /* CharactersModel.swift in Sources */,

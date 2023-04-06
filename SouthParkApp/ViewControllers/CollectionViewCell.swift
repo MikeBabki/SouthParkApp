@@ -26,8 +26,15 @@ class CollectionViewCell: UICollectionViewCell {
     
     private let episodeNameLabel: UILabel = {
        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 10)
         label.translatesAutoresizingMaskIntoConstraints = false
-        
+        label.layer.cornerRadius = 5
+        label.backgroundColor = UIColor(white: 0.1, alpha: 0.3)
+        label.alpha = 1
+        label.layer.borderColor = UIColor.black.cgColor
+        label.layer.borderWidth = 1
         return label
         
     }()
@@ -71,8 +78,9 @@ class CollectionViewCell: UICollectionViewCell {
             randomEpisodeImage.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: 0),
             randomEpisodeImage.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: 0),
             
-            episodeNameLabel.centerXAnchor.constraint(equalTo: randomEpisodeImage.centerXAnchor, constant: 0),
-            episodeNameLabel.bottomAnchor.constraint(equalTo: randomEpisodeImage.bottomAnchor, constant: -20)
+            episodeNameLabel.leadingAnchor.constraint(equalTo: randomEpisodeImage.leadingAnchor, constant: 3),
+            episodeNameLabel.trailingAnchor.constraint(equalTo: randomEpisodeImage.trailingAnchor, constant: -3),
+            episodeNameLabel.topAnchor.constraint(equalTo: randomEpisodeImage.topAnchor, constant: 10)
         ])
     }
     

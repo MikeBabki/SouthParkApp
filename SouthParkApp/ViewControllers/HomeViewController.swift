@@ -12,7 +12,6 @@ import SDWebImage
 class HomeViewController: UIViewController {
 
     // MARK: - Private properties (View's)
-    var fullNameList1 = SouthParkCharacter.getFullName()
     var networkEkz = NetworkManager()
     var massiveEpisodes: [Data] = []
     
@@ -177,9 +176,8 @@ extension HomeViewController: UICollectionViewDataSource {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell {
             let data = self.massiveEpisodes[indexPath.item]
             
-            cell.configureCollectionCell(image: data.thumbnail_url ?? "" , label: data.name ?? "sSOSAT")
+            cell.configureCollectionCell(image: data.thumbnail_url ?? "" , label: data.name ?? "Error")
             cell.backgroundColor = .systemBackground
-            
             return cell
         }
         fatalError("Unable to deque")
