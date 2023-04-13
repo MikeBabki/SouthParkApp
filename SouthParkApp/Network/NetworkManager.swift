@@ -36,18 +36,39 @@ class NetworkManager {
     }
     func getAllCharacters(completion: @escaping (Result< DataHero, Error>) -> Void) {
         
-        var allCharacters = "https://spapi.dev/api/characters"
+        var allCharacters = "https://spapi.dev/api/characters/"
         var url = URL(string: allCharacters)
         
         URLSession.shared.dataTask(with: url!) { data, _, error in
             
             guard let data = data, error == nil else {
+                
                 return
             }
+            
             do {
                 let result = try JSONDecoder().decode(DataHero.self, from: data)
                 completion(.success(result))
                                 print(result)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }.resume()
+    }
+    func getAllIdCharacters(charId: Int, completion: @escaping (Result< DataId, Error>) -> Void) {
+ 
+        let url = URL(string: URLManager.characterURLCreator(characterID: charId))
+        print(url)
+        URLSession.shared.dataTask(with: url!) { data, _, error in
+            
+            guard let data = data else {
+                
+                return
+            }
+           
+            do {
+                let result = try JSONDecoder().decode(DataId.self, from: data)
+                completion(.success(result))
             } catch {
                 print(error.localizedDescription)
             }

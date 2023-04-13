@@ -23,6 +23,7 @@
 		DDA109EB29DDB7DF00B2C439 /* HeroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109EA29DDB7DF00B2C439 /* HeroModel.swift */; };
 		DDA109EE29DDF8A500B2C439 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = DDA109ED29DDF8A500B2C439 /* SDWebImage */; };
 		DDA109F029DDF8A500B2C439 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DDA109EF29DDF8A500B2C439 /* SDWebImageMapKit */; };
+		DDA109F429E4164600B2C439 /* CharacterIdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109F329E4164600B2C439 /* CharacterIdModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		DDA109E429D2F44900B2C439 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		DDA109E829DDB61200B2C439 /* CharacterDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDescriptionViewController.swift; sourceTree = "<group>"; };
 		DDA109EA29DDB7DF00B2C439 /* HeroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroModel.swift; sourceTree = "<group>"; };
+		DDA109F329E4164600B2C439 /* CharacterIdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterIdModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			children = (
 				DDA109E229D2F41E00B2C439 /* CharactersModel.swift */,
 				DDA109EA29DDB7DF00B2C439 /* HeroModel.swift */,
+				DDA109F329E4164600B2C439 /* CharacterIdModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				DDA109C429CC848E00B2C439 /* MainTabBarViewController.swift in Sources */,
 				DDA109D929CCB19700B2C439 /* CollectionViewCell.swift in Sources */,
 				DDA109C029CC848E00B2C439 /* AppDelegate.swift in Sources */,
+				DDA109F429E4164600B2C439 /* CharacterIdModel.swift in Sources */,
 				DDA109C229CC848E00B2C439 /* SceneDelegate.swift in Sources */,
 				DDA109D529CC85FB00B2C439 /* HomeViewController.swift in Sources */,
 			);

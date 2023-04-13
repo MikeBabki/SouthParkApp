@@ -7,15 +7,17 @@
 
 import Foundation
 
-struct HeroData: Decodable {
-    var dataHero: [DataHero]?
-}
 struct DataHero: Decodable {
-    
-    var name: String?
-    var age: Int?
-    var sex: String
-    var hair_color: String?
-    var occupation: String?
-    var religion: String?
+    let data: [DataHero1]?
 }
+struct DataHero1: Decodable {
+    
+    let id: Int?
+      let name: String?
+      let age: Int?
+      let hair_color: String?
+      let sex: String?
+      let occupation: String?
+      let religion: String?
+  }
+

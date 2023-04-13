@@ -11,10 +11,11 @@ import SDWebImage
 class SearchViewController: UIViewController {
     
     // MARK: - Private properties (View's)
-    
-    var massiveCharacters: [DataHero] = []
+    private var pageNumber = 1
+    var pagesNum = DataId()
+    var massiveIdCharacters: [DataIdCharacters] = []
     var networkEkzChar = NetworkManager()
-//    var fullNameList = SouthParkCharacter.getFullName()
+    
    
     // MARK: - UI Components
     private lazy var mainTableView: UITableView = {
@@ -48,15 +49,16 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
         self.setupUI()
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
+        self.mainTableView.tableFooterView = UIView(frame: .zero)
         loadData()
+        
     }
     private func setupUI() {
         self.view.backgroundColor = .systemBackground
-        
+       
         self.view.addSubview(mainTableView)
         self.view.addSubview(headerView)
         headerView.addSubview(charactersLabel)
@@ -75,66 +77,113 @@ class SearchViewController: UIViewController {
             mainTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             mainTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             mainTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        
         ])
     }
 }
 
 // MARK: - Extentions
 
-
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return massiveCharacters.count
+        
+        return massiveIdCharacters.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = mainTableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as? TableViewCell else {
             fatalError("TableView could bot deque a customcell")
         }
-//        let track = fullNameList[indexPath.row]
-        let data = self.massiveCharacters[indexPath.row]
-   
-        cell.configure(label: data.name ?? "")
-//        cell.textLabel?.text = data.name
-//        cell.configure(image: data.)
+        let data = massiveIdCharacters[indexPath.row]
+        cell.configure(label: data.name ?? "", image: data.image)
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 112.5
+        return 120
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = CharacterDescriptionViewController()
-//        vc.heroImage.image = UIImage(named: fullNameList[indexPath.row].fullName)
-//        vc.heroName.text = fullNameList[indexPath.row].fullName
+        let data2 = massiveIdCharacters[indexPath.row]
+        vc.heroName.text = data2.name
+        vc.heroNameLabel.text = "Name is \(data2.name)"
+        
+       
+//        vc.heroSexLabel.text = "Sex is \(data2.sex)"
+//        vc.heroAgeLabel.text = "Age is \(data2.age)" ?? "hz"
+//        vc.heroReligionLabel.text = "Religion is \(data2.religion)"
+//        vc.heroOccupationLabel.text = "Occupation is \(data2.occupation)"
+//        vc.heroHairColorLabel.text = "Hair color is \(data2.hair_color)"
+        vc.heroImage.image = UIImage(named: data2.name)
+
+        
+        if data2.sex == nil {
+            vc.heroSexLabel.text = "Sex is unknown"
+        }else {
+            vc.heroSexLabel.text = "Sex is \(data2.sex!)"
+        }
+        
+        if data2.age == nil {
+            vc.heroAgeLabel.text = "Age is unknown"
+        } else {
+            vc.heroAgeLabel.text = "Age is \(data2.age!)"
+        }
+
+        if data2.religion == nil {
+            vc.heroReligionLabel.text = "Religion  is unknown"
+        }else {
+            vc.heroReligionLabel.text = "Religion is \(data2.religion!)"
+        }
+
+        if data2.occupation == nil {
+            vc.heroOccupationLabel.text = "Occupation is unknown"
+        }else {
+            vc.heroOccupationLabel.text = "Occupation is \(data2.occupation!)"
+        }
+
+        if data2.hair_color == nil {
+            vc.heroHairColorLabel.text = "Hair color is unknown"
+        } else {
+            vc.heroHairColorLabel.text = "Hair color is \(data2.hair_color!)"
+        }
+        
         vc.heroImage.contentMode = .scaleAspectFill
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if pageNumber == pageNumber + 1 {
+        } else {
+            if indexPath.row == (massiveIdCharacters.count ?? 3) - 2 {
+                loadData()
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "List"
     }
 }
 
 extension SearchViewController {
-    
     func loadData() {
-        networkEkzChar.getAllCharacters {  Result in
-            switch Result {
+        networkEkzChar.getAllIdCharacters(charId: pageNumber) {  result in
+            switch result {
                 
             case .success(let data):
                 DispatchQueue.main.async {
-                    self.massiveCharacters = [data] ?? []
+                    
+                    self.pageNumber += 1
+                    self.massiveIdCharacters.append(contentsOf: data.data ?? [])
                     self.mainTableView.reloadData()
+                    self.pagesNum = data
                 }
-            case .failure(_):
+            case .failure(let error):
                 print("Opa")
-                
             }
         }
     }
 }
-    

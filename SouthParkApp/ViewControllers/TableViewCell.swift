@@ -14,7 +14,9 @@ class TableViewCell: UITableViewCell {
   lazy var charNameLabel: UILabel = {
         let label = UILabel()
       label.textColor = .label
-      label.textAlignment = .left
+      label.textAlignment = .center
+      label.backgroundColor = UIColor(white: 0.15, alpha: 0.3)
+      label.alpha = 1
       label.font = .systemFont(ofSize: 24, weight: .medium)
         
         return label
@@ -23,9 +25,11 @@ class TableViewCell: UITableViewCell {
    lazy var charImage: UIImageView = {
         
         let image = UIImageView()
-       image.image = UIImage(systemName: "pencil")
+       image.image = UIImage(systemName: "person")
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
+       image.layer.cornerRadius = self.frame.height / 2.0
+       image.layer.masksToBounds = true
         
         return image
     }()
@@ -38,9 +42,10 @@ class TableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    public func configure(label: String) {
+    public func configure(label: String, image: String) {
         charNameLabel.text = label
 //        charImage.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: "placeholder.png"))
+        charImage.image = UIImage(named: image)
     }
     private func setupUI() {
         self.contentView.addSubview(charImage)

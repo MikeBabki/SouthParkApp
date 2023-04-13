@@ -14,6 +14,9 @@ class URLManager {
         return urlString + "/character/\(episodeNumber)"
     }
     static func characterURLCreator(characterID: Int) -> String {
-        return urlString + "/character/\(characterID)"
+        return urlString + "/characters?page=\(characterID)"
     }
 }
+
+
+//https://spapi.dev/api/characters?page=8

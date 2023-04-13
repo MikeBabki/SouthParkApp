@@ -201,7 +201,9 @@ extension HomeViewController {
             switch Result {
             
             case .success(let data):
+                
                 DispatchQueue.main.async {
+                    
                     self.massiveEpisodes = data.data ?? []
                     self.collectionViewEpisodes.reloadData()
                 }
