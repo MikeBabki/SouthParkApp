@@ -190,7 +190,9 @@ extension HomeViewController: UICollectionViewDataSource {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = EpisodeDescriptionViewController()
         print("Collection view at row \(collectionView.tag) selected index path \(indexPath)")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

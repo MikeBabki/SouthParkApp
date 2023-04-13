@@ -16,6 +16,11 @@ class SearchViewController: UIViewController {
     var massiveIdCharacters: [DataIdCharacters] = []
     var networkEkzChar = NetworkManager()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        animateTableView()
+    }
    
     // MARK: - UI Components
     private lazy var mainTableView: UITableView = {
@@ -25,6 +30,8 @@ class SearchViewController: UIViewController {
         tableView.allowsSelection = true
         tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
         return tableView
     }()
     
@@ -98,6 +105,26 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    private func animateTableView() {
+        mainTableView.reloadData()
+        let cells = mainTableView.visibleCells
+        let tableViewHeight = mainTableView.bounds.height
+        var delay: Double = 0
+        
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
+            
+            UIView.animate(withDuration: 1.5,
+                           delay: delay * 0.05,
+                           usingSpringWithDamping: 0.8,
+                           initialSpringVelocity: 0,
+                           options: .curveEaseInOut) {
+                cell.transform =  CGAffineTransform.identity
+            }
+            delay += 1
+            
+        }
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
@@ -110,44 +137,37 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         let data2 = massiveIdCharacters[indexPath.row]
         vc.heroName.text = data2.name
         vc.heroNameLabel.text = "Name is \(data2.name)"
-        
-       
-//        vc.heroSexLabel.text = "Sex is \(data2.sex)"
-//        vc.heroAgeLabel.text = "Age is \(data2.age)" ?? "hz"
-//        vc.heroReligionLabel.text = "Religion is \(data2.religion)"
-//        vc.heroOccupationLabel.text = "Occupation is \(data2.occupation)"
-//        vc.heroHairColorLabel.text = "Hair color is \(data2.hair_color)"
         vc.heroImage.image = UIImage(named: data2.name)
 
         
         if data2.sex == nil {
             vc.heroSexLabel.text = "Sex is unknown"
         }else {
-            vc.heroSexLabel.text = "Sex is \(data2.sex!)"
+            vc.heroSexLabel.text = "Sex is \(data2.sex ?? "")"
         }
         
         if data2.age == nil {
             vc.heroAgeLabel.text = "Age is unknown"
         } else {
-            vc.heroAgeLabel.text = "Age is \(data2.age!)"
+            vc.heroAgeLabel.text = "Age is \(data2.age ?? 2)"
         }
 
         if data2.religion == nil {
             vc.heroReligionLabel.text = "Religion  is unknown"
         }else {
-            vc.heroReligionLabel.text = "Religion is \(data2.religion!)"
+            vc.heroReligionLabel.text = "Religion is \(data2.religion ?? "")"
         }
 
         if data2.occupation == nil {
             vc.heroOccupationLabel.text = "Occupation is unknown"
         }else {
-            vc.heroOccupationLabel.text = "Occupation is \(data2.occupation!)"
+            vc.heroOccupationLabel.text = "Occupation is \(data2.occupation ?? "")"
         }
 
         if data2.hair_color == nil {
             vc.heroHairColorLabel.text = "Hair color is unknown"
         } else {
-            vc.heroHairColorLabel.text = "Hair color is \(data2.hair_color!)"
+            vc.heroHairColorLabel.text = "Hair color is \(data2.hair_color ?? "")"
         }
         
         vc.heroImage.contentMode = .scaleAspectFill
