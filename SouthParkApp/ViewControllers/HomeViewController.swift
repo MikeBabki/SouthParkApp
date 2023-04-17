@@ -32,8 +32,8 @@ class HomeViewController: UIViewController {
     private lazy var randomEpisodeImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "heroImage")
+//        randomEpisodeImage.sd_setImage(with: URL(string: massiveEpisodes[0].thumbnail_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
         image.clipsToBounds = true
-//        image.backgroundColor = .black
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
         
@@ -122,6 +122,7 @@ extension HomeViewController {
         
         episodesView.addSubview(episodesLabel)
         episodesView.addSubview(collectionViewEpisodes)
+
         
         // MARK: - Constraints
         
@@ -182,7 +183,6 @@ extension HomeViewController: UICollectionViewDataSource {
         }
         fatalError("Unable to deque")
     }
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -191,8 +191,16 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = EpisodeDescriptionViewController()
-        print("Collection view at row \(collectionView.tag) selected index path \(indexPath)")
+        let data = self.massiveEpisodes[indexPath.row]
+
+        vc.episodeNameLabel.text = data.name
+        vc.episodeAndSeasonLabel.text = "Season \(data.season ?? 0), episode \(data.episode ?? 0)"
+        vc.episodeAirDateLabel.text = data.air_date ?? ""
+        vc.episodeDescriptionLabel.text = data.description ?? ""
+        vc.episodeMainPhoto.sd_setImage(with: URL(string: data.thumbnail_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
+        
         self.navigationController?.pushViewController(vc, animated: true)
+        
     }
 }
 
