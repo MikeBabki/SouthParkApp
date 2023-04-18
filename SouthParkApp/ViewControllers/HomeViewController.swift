@@ -14,6 +14,10 @@ class HomeViewController: UIViewController {
     // MARK: - Private properties (View's)
     var networkEkz = NetworkManager()
     var massiveEpisodes: [Data] = []
+    var pagesNum = DataPark()
+    private var pageNum = 1
+    
+    
     
     private lazy var mainView: UIView = {
         let imageView = UIImageView()
@@ -186,6 +190,14 @@ extension HomeViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if pageNum == pageNum + 1 {
+        } else {
+            if indexPath.row == (massiveEpisodes.count ?? 3) - 2 {
+                loadData()
+            }
+        }
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate {
@@ -207,15 +219,18 @@ extension HomeViewController: UICollectionViewDelegate {
 extension HomeViewController {
     
     func loadData() {
-        networkEkz.getAllEpisodes { Result in
+        networkEkz.getAllEpisodes(pageId: pageNum) { Result in
             switch Result {
             
             case .success(let data):
                 
                 DispatchQueue.main.async {
                     
-                    self.massiveEpisodes = data.data ?? []
+                    self.pageNum += 1
+                    self.massiveEpisodes.append(contentsOf: data.data ?? [])
+//                    self.massiveEpisodes = data.data ?? []
                     self.collectionViewEpisodes.reloadData()
+
                 }
             case .failure(_):
                 print("Opa")

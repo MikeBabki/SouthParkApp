@@ -16,7 +16,7 @@ class URLManager {
     static func characterURLCreator(characterID: Int) -> String {
         return urlString + "/characters?page=\(characterID)"
     }
+    static func trendingEpisodesURLCreator(episodePage: Int) -> String {
+        return urlString + "/episodes?page=\(episodePage)"
+    }
 }
-
-
-//https://spapi.dev/api/characters?page=8

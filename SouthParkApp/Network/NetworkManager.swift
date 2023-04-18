@@ -15,11 +15,13 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     
-    func getAllEpisodes(completion: @escaping (Result< DataPark, Error>) -> Void) {
+    func getAllEpisodes(pageId: Int, completion: @escaping (Result< DataPark, Error>) -> Void) {
         
-        var allEpisodes = "https://spapi.dev/api/episodes"
-        var url = URL(string: allEpisodes)
         
+        let url = URL(string: URLManager.trendingEpisodesURLCreator(episodePage: pageId))
+//        var allEpisodes = "https://spapi.dev/api/episodes"
+//        var url = URL(string: allEpisodes)
+//
         URLSession.shared.dataTask(with: url!) { data, _, error in
             
             guard let data = data, error == nil else {
@@ -34,27 +36,7 @@ class NetworkManager {
             }
         }.resume()
     }
-    func getAllCharacters(completion: @escaping (Result< DataHero, Error>) -> Void) {
-        
-        var allCharacters = "https://spapi.dev/api/characters/"
-        var url = URL(string: allCharacters)
-        
-        URLSession.shared.dataTask(with: url!) { data, _, error in
-            
-            guard let data = data, error == nil else {
-                
-                return
-            }
-            
-            do {
-                let result = try JSONDecoder().decode(DataHero.self, from: data)
-                completion(.success(result))
-                                print(result)
-            } catch {
-                print(error.localizedDescription)
-            }
-        }.resume()
-    }
+    
     func getAllIdCharacters(charId: Int, completion: @escaping (Result< DataId, Error>) -> Void) {
  
         let url = URL(string: URLManager.characterURLCreator(characterID: charId))

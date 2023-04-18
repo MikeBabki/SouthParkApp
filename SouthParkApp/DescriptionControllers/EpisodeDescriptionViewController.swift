@@ -11,6 +11,7 @@ class EpisodeDescriptionViewController: UIViewController {
 
     public lazy var episodeMainPhoto: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -110,8 +111,9 @@ extension EpisodeDescriptionViewController {
             episodeDesciprionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
             
             episodeNameLabel.topAnchor.constraint(equalTo: episodeDesciprionView.topAnchor, constant: 30),
-            episodeNameLabel.leadingAnchor.constraint(equalTo: episodeDesciprionView.leadingAnchor, constant: 20),
-            episodeNameLabel.trailingAnchor.constraint(equalTo: episodeDesciprionView.trailingAnchor, constant: -20),
+            episodeNameLabel.centerXAnchor.constraint(equalTo: episodeDesciprionView.centerXAnchor),
+//            episodeNameLabel.leadingAnchor.constraint(equalTo: episodeDesciprionView.leadingAnchor, constant: 20),
+//            episodeNameLabel.trailingAnchor.constraint(equalTo: episodeDesciprionView.trailingAnchor, constant: -20),
             
             episodeAndSeasonLabel.topAnchor.constraint(equalTo: episodeNameLabel.topAnchor, constant: 30),
             episodeAndSeasonLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80),
