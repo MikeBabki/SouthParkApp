@@ -28,15 +28,12 @@ class HomeViewController: UIViewController {
     private lazy var episodesView: UIView = {
         let imageView = UIView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.backgroundColor = .black
         return imageView
     }()
     
     // MARK: - Private properties First View
     private lazy var randomEpisodeImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "heroImage")
-//        randomEpisodeImage.sd_setImage(with: URL(string: massiveEpisodes[0].thumbnail_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
         image.clipsToBounds = true
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -62,9 +59,7 @@ class HomeViewController: UIViewController {
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
         button.setTitle("Watch this!", for: .normal)
-        
         button.translatesAutoresizingMaskIntoConstraints = false
-        
         
         return button
     }()
@@ -87,7 +82,6 @@ class HomeViewController: UIViewController {
         layout.itemSize = CGSize(width: 140, height: 200)
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 10
-//        layout.collectionView?.isScrollEnabled = true
         
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
@@ -105,6 +99,17 @@ class HomeViewController: UIViewController {
     
         setupText()
         loadData()
+       
+        
+        watchRandomEpisodeButton.addTarget(self, action: #selector(self.watchThisButton), for: .touchUpInside)
+    }
+    @objc func watchThisButton() {
+//        var alertView = UIAlertView()
+//        alertView.addButton(withTitle: "Ok")
+//            alertView.title = "title"
+//            alertView.message = "message"
+//            alertView.show()
+        print("salam")
     }
 }
 
@@ -121,8 +126,9 @@ extension HomeViewController {
         view.addSubview(episodesView)
         
         mainView.addSubview(randomEpisodeImage)
-        mainView.addSubview(titleHeaderImage)
         mainView.addSubview(watchRandomEpisodeButton)
+        mainView.addSubview(titleHeaderImage)
+    
         
         episodesView.addSubview(episodesLabel)
         episodesView.addSubview(collectionViewEpisodes)
@@ -153,7 +159,7 @@ extension HomeViewController {
             
             watchRandomEpisodeButton.bottomAnchor.constraint(equalTo: randomEpisodeImage.bottomAnchor, constant: -20),
             watchRandomEpisodeButton.centerXAnchor.constraint(equalTo: randomEpisodeImage.centerXAnchor, constant: 0),
-            watchRandomEpisodeButton.widthAnchor.constraint(equalToConstant: 150),
+            watchRandomEpisodeButton.widthAnchor.constraint(equalToConstant: 140),
             
             episodesLabel.topAnchor.constraint(equalTo: episodesView.topAnchor, constant: 20),
             episodesLabel.leadingAnchor.constraint(equalTo: episodesView.leadingAnchor, constant: 16),
@@ -210,6 +216,7 @@ extension HomeViewController: UICollectionViewDelegate {
         vc.episodeAirDateLabel.text = data.air_date ?? ""
         vc.episodeDescriptionLabel.text = data.description ?? ""
         vc.episodeMainPhoto.sd_setImage(with: URL(string: data.thumbnail_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
+//        randomEpisodeImage.sd_setImage(with: URL(string: data.thumbnail_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
         
         self.navigationController?.pushViewController(vc, animated: true)
         
@@ -225,12 +232,12 @@ extension HomeViewController {
             case .success(let data):
                 
                 DispatchQueue.main.async {
-                    
+                    var number = [0,1,2,3,4,5,6,7,8,9]
                     self.pageNum += 1
                     self.massiveEpisodes.append(contentsOf: data.data ?? [])
-//                    self.massiveEpisodes = data.data ?? []
+                    self.randomEpisodeImage.sd_setImage(with: URL(string: self.massiveEpisodes[number.randomElement() ?? 2].thumbnail_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
                     self.collectionViewEpisodes.reloadData()
-
+                    
                 }
             case .failure(_):
                 print("Opa")
