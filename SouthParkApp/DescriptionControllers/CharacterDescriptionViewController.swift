@@ -75,6 +75,7 @@ class CharacterDescriptionViewController: UIViewController {
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 20)
+        label.numberOfLines = 0
         return label
     }()
     public lazy var heroReligionLabel: UILabel = {
@@ -141,6 +142,8 @@ class CharacterDescriptionViewController: UIViewController {
             
             heroOccupationLabel.topAnchor.constraint(equalTo: heroReligionLabel.topAnchor, constant: 65),
             heroOccupationLabel.centerXAnchor.constraint(equalTo: heroView.centerXAnchor, constant: 0),
+            heroOccupationLabel.leadingAnchor.constraint(equalTo: heroView.leadingAnchor, constant: 5),
+            heroOccupationLabel.trailingAnchor.constraint(equalTo: heroView.trailingAnchor, constant: -5)
 //            heroOccupationLabel.bottomAnchor.constraint(equalTo: heroView.bottomAnchor, constant: -40)
 
             

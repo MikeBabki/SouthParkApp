@@ -18,8 +18,8 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         animateTableView()
+
     }
    
     // MARK: - UI Components
@@ -30,7 +30,9 @@ class SearchViewController: UIViewController {
         tableView.allowsSelection = true
         tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView(frame: .zero)
         
         return tableView
     }()
@@ -56,14 +58,12 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupUI()
-        self.mainTableView.delegate = self
-        self.mainTableView.dataSource = self
-        self.mainTableView.tableFooterView = UIView(frame: .zero)
+        setupUI()
         loadData()
         
     }
     private func setupUI() {
+        
         self.view.backgroundColor = .systemBackground
        
         self.view.addSubview(mainTableView)
@@ -106,14 +106,15 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     private func animateTableView() {
-        mainTableView.reloadData()
+        
+//        mainTableView.reloadData()
         let cells = mainTableView.visibleCells
         let tableViewHeight = mainTableView.bounds.height
         var delay: Double = 0
         
         for cell in cells {
             cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
-            
+
             UIView.animate(withDuration: 1.5,
                            delay: delay * 0.05,
                            usingSpringWithDamping: 0.8,
@@ -122,8 +123,9 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.transform =  CGAffineTransform.identity
             }
             delay += 1
-            
+
         }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -190,6 +192,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension SearchViewController {
     func loadData() {
+        
         networkEkzChar.getAllIdCharacters(charId: pageNumber) {  result in
             switch result {
                 
@@ -197,9 +200,11 @@ extension SearchViewController {
                 DispatchQueue.main.async {
                     
                     self.pageNumber += 1
+                    
                     self.massiveIdCharacters.append(contentsOf: data.data ?? [])
                     self.mainTableView.reloadData()
                     self.pagesNum = data
+                    self.animateTableView()
                 }
             case .failure(let error):
                 print("Opa")

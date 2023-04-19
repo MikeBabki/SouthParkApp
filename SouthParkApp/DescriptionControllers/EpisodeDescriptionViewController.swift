@@ -9,7 +9,8 @@ import UIKit
 
 class EpisodeDescriptionViewController: UIViewController {
 
-    public lazy var episodeMainPhoto: UIImageView = {
+    
+    private lazy var episodeMainPhoto: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -24,7 +25,7 @@ class EpisodeDescriptionViewController: UIViewController {
     }()
     
     
-    public lazy var episodeAndSeasonLabel: UILabel = {
+    private lazy var episodeAndSeasonLabel: UILabel = {
        let label = UILabel()
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +38,7 @@ class EpisodeDescriptionViewController: UIViewController {
         return label
     }()
     
-    public lazy var episodeNameLabel: UILabel = {
+    private lazy var episodeNameLabel: UILabel = {
        let label = UILabel()
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +50,7 @@ class EpisodeDescriptionViewController: UIViewController {
         label.numberOfLines = 0
         return label
     }()
-    public lazy var episodeAirDateLabel: UILabel = {
+    private lazy var episodeAirDateLabel: UILabel = {
        let label = UILabel()
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +62,7 @@ class EpisodeDescriptionViewController: UIViewController {
         label.numberOfLines = 0
         return label
     }()
-    public lazy var episodeDescriptionLabel: UILabel = {
+    private lazy var episodeDescriptionLabel: UILabel = {
        let label = UILabel()
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -74,28 +75,28 @@ class EpisodeDescriptionViewController: UIViewController {
     }()
     
     static let identifier  = "episodeDescriptionId"
+    var data: Data? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-      setupText()
+        setupUI()
+        setupText()
     }
-
 }
 // MARK: - AddSubView's
 
 extension EpisodeDescriptionViewController {
     
-    func setupText() {
+    func setupUI() {
         
+        view.backgroundColor = .black
         view.addSubview(episodeMainPhoto)
         view.addSubview(episodeDesciprionView)
         episodeDesciprionView.addSubview(episodeNameLabel)
         episodeDesciprionView.addSubview(episodeAndSeasonLabel)
         episodeDesciprionView.addSubview(episodeAirDateLabel)
         episodeDesciprionView.addSubview(episodeDescriptionLabel)
-        
-        
         
         // MARK: - Constraints
         
@@ -112,8 +113,6 @@ extension EpisodeDescriptionViewController {
             
             episodeNameLabel.topAnchor.constraint(equalTo: episodeDesciprionView.topAnchor, constant: 30),
             episodeNameLabel.centerXAnchor.constraint(equalTo: episodeDesciprionView.centerXAnchor),
-//            episodeNameLabel.leadingAnchor.constraint(equalTo: episodeDesciprionView.leadingAnchor, constant: 20),
-//            episodeNameLabel.trailingAnchor.constraint(equalTo: episodeDesciprionView.trailingAnchor, constant: -20),
             
             episodeAndSeasonLabel.topAnchor.constraint(equalTo: episodeNameLabel.topAnchor, constant: 30),
             episodeAndSeasonLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80),
@@ -121,17 +120,22 @@ extension EpisodeDescriptionViewController {
             
             episodeAirDateLabel.topAnchor.constraint(equalTo: episodeAndSeasonLabel.topAnchor, constant: 25),
             episodeAirDateLabel.centerXAnchor.constraint(equalTo: episodeDesciprionView.centerXAnchor, constant: 0),
-//            episodeAirDateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-//            episodeAirDateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             episodeDescriptionLabel.topAnchor.constraint(equalTo: episodeAirDateLabel.topAnchor, constant: 30),
             episodeDescriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             episodeDescriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
             episodeDescriptionLabel.bottomAnchor.constraint(equalTo: episodeDesciprionView.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            
-
     ])
         
     }
 }
 
+extension EpisodeDescriptionViewController {
+    func setupText() {
+        episodeNameLabel.text = data?.name ?? ""
+        episodeAndSeasonLabel.text = "Season \(data?.season ?? 0), episode \(data?.episode ?? 0)"
+        episodeAirDateLabel.text = data?.air_date ?? ""
+        episodeDescriptionLabel.text = data?.description ?? ""
+        episodeMainPhoto.sd_setImage(with: URL(string: data?.thumbnail_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
+    }
+}

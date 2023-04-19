@@ -15,20 +15,21 @@ class HomeViewController: UIViewController {
     var networkEkz = NetworkManager()
     var massiveEpisodes: [Data] = []
     var pagesNum = DataPark()
+    
+    private var numberEpisode: Int = 0
     private var pageNum = 1
-    
-    
-    
+
     private lazy var mainView: UIView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     private lazy var episodesView: UIView = {
-        let imageView = UIView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+        let view = UIView()
+        view.backgroundColor = .black
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     // MARK: - Private properties First View
@@ -37,7 +38,6 @@ class HomeViewController: UIViewController {
         image.clipsToBounds = true
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
-        
         return image
     }()
     private lazy var titleHeaderImage: UIImageView = {
@@ -46,12 +46,10 @@ class HomeViewController: UIViewController {
         image.clipsToBounds = true
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
-        
         return image
     }()
     
     private lazy var watchRandomEpisodeButton: UIButton = {
-       
         let button = UIButton()
         button.layer.cornerRadius = 5
         button.backgroundColor = UIColor(white: 0.1, alpha: 0.5)
@@ -60,7 +58,7 @@ class HomeViewController: UIViewController {
         button.layer.borderWidth = 1
         button.setTitle("Watch this!", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        
+        button.addTarget(self, action: #selector(watchThisButton), for: .touchUpInside)
         return button
     }()
     
@@ -99,17 +97,12 @@ class HomeViewController: UIViewController {
     
         setupText()
         loadData()
-       
         
-        watchRandomEpisodeButton.addTarget(self, action: #selector(self.watchThisButton), for: .touchUpInside)
     }
     @objc func watchThisButton() {
-//        var alertView = UIAlertView()
-//        alertView.addButton(withTitle: "Ok")
-//            alertView.title = "title"
-//            alertView.message = "message"
-//            alertView.show()
-        print("salam")
+        let vc = EpisodeDescriptionViewController()
+        vc.data = massiveEpisodes[self.numberEpisode]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -125,15 +118,13 @@ extension HomeViewController {
         view.addSubview(mainView)
         view.addSubview(episodesView)
         
+        mainView.addSubview(titleHeaderImage)
         mainView.addSubview(randomEpisodeImage)
         mainView.addSubview(watchRandomEpisodeButton)
-        mainView.addSubview(titleHeaderImage)
-    
         
         episodesView.addSubview(episodesLabel)
         episodesView.addSubview(collectionViewEpisodes)
 
-        
         // MARK: - Constraints
         
         NSLayoutConstraint.activate([
@@ -155,10 +146,11 @@ extension HomeViewController {
             titleHeaderImage.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 0),
             titleHeaderImage.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
             titleHeaderImage.widthAnchor.constraint(equalToConstant: 170),
+            
             titleHeaderImage.bottomAnchor.constraint(equalTo: randomEpisodeImage.topAnchor, constant: 0),
             
-            watchRandomEpisodeButton.bottomAnchor.constraint(equalTo: randomEpisodeImage.bottomAnchor, constant: -20),
-            watchRandomEpisodeButton.centerXAnchor.constraint(equalTo: randomEpisodeImage.centerXAnchor, constant: 0),
+            watchRandomEpisodeButton.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -20),
+            watchRandomEpisodeButton.centerXAnchor.constraint(equalTo: mainView.centerXAnchor, constant: 0),
             watchRandomEpisodeButton.widthAnchor.constraint(equalToConstant: 140),
             
             episodesLabel.topAnchor.constraint(equalTo: episodesView.topAnchor, constant: 20),
@@ -186,7 +178,17 @@ extension HomeViewController: UICollectionViewDataSource {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell {
             let data = self.massiveEpisodes[indexPath.item]
-            
+               UIView.animate(withDuration: 0.5,
+                              animations: {
+                               //Fade-out
+                               cell.alpha = 0.5
+               }) { (completed) in
+                   UIView.animate(withDuration: 0.3,
+                                  animations: {
+                                   //Fade-out
+                                   cell.alpha = 1
+                   })
+               }
             cell.configureCollectionCell(image: data.thumbnail_url ?? "" , label: data.name ?? "Error")
             cell.backgroundColor = .systemBackground
             return cell
@@ -209,15 +211,7 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = EpisodeDescriptionViewController()
-        let data = self.massiveEpisodes[indexPath.row]
-
-        vc.episodeNameLabel.text = data.name
-        vc.episodeAndSeasonLabel.text = "Season \(data.season ?? 0), episode \(data.episode ?? 0)"
-        vc.episodeAirDateLabel.text = data.air_date ?? ""
-        vc.episodeDescriptionLabel.text = data.description ?? ""
-        vc.episodeMainPhoto.sd_setImage(with: URL(string: data.thumbnail_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
-//        randomEpisodeImage.sd_setImage(with: URL(string: data.thumbnail_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
-        
+        vc.data = self.massiveEpisodes[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -233,9 +227,10 @@ extension HomeViewController {
                 
                 DispatchQueue.main.async {
                     var number = [0,1,2,3,4,5,6,7,8,9]
+                    self.numberEpisode = number.randomElement() ?? 2
                     self.pageNum += 1
                     self.massiveEpisodes.append(contentsOf: data.data ?? [])
-                    self.randomEpisodeImage.sd_setImage(with: URL(string: self.massiveEpisodes[number.randomElement() ?? 2].thumbnail_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
+                    self.randomEpisodeImage.sd_setImage(with: URL(string: self.massiveEpisodes[self.numberEpisode].thumbnail_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
                     self.collectionViewEpisodes.reloadData()
                     
                 }
