@@ -19,12 +19,12 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         animateTableView()
-
+        
     }
-   
+    
     // MARK: - UI Components
     private lazy var mainTableView: UITableView = {
-       
+        
         let tableView = UITableView()
         tableView.backgroundColor = .systemBackground
         tableView.allowsSelection = true
@@ -38,7 +38,7 @@ class SearchViewController: UIViewController {
     }()
     
     private lazy var charactersLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "South Park Characters"
         label.backgroundColor = .clear
         label.font = .systemFont(ofSize: 23, weight: .bold)
@@ -48,38 +48,38 @@ class SearchViewController: UIViewController {
     }()
     
     private lazy var headerView: UIView = {
-       
+        
         let view = UIView()
         view.backgroundColor = .systemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
         loadData()
-        
     }
+    
     private func setupUI() {
         
         self.view.backgroundColor = .systemBackground
-       
+        
         self.view.addSubview(mainTableView)
         self.view.addSubview(headerView)
         headerView.addSubview(charactersLabel)
         
         NSLayoutConstraint.activate([
             
-            headerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
+            headerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             headerView.bottomAnchor.constraint(equalTo: mainTableView.topAnchor, constant: 0),
             
             charactersLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 16),
             charactersLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor, constant: 0),
-        
+            
             mainTableView.topAnchor.constraint(equalTo: charactersLabel.bottomAnchor, constant: 16),
             mainTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             mainTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -88,7 +88,7 @@ class SearchViewController: UIViewController {
     }
 }
 
-// MARK: - Extentions
+// MARK: - Extentions for tableview datasource, delegate and animation
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,14 +107,13 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     private func animateTableView() {
         
-//        mainTableView.reloadData()
         let cells = mainTableView.visibleCells
         let tableViewHeight = mainTableView.bounds.height
         var delay: Double = 0
         
         for cell in cells {
             cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
-
+            
             UIView.animate(withDuration: 1.5,
                            delay: delay * 0.05,
                            usingSpringWithDamping: 0.8,
@@ -123,9 +122,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.transform =  CGAffineTransform.identity
             }
             delay += 1
-
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -135,44 +132,9 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
         let vc = CharacterDescriptionViewController()
-        let data2 = massiveIdCharacters[indexPath.row]
-        vc.heroName.text = data2.name
-        vc.heroNameLabel.text = "Name is \(data2.name)"
-        vc.heroImage.image = UIImage(named: data2.name)
-
-        
-        if data2.sex == nil {
-            vc.heroSexLabel.text = "Sex is unknown"
-        }else {
-            vc.heroSexLabel.text = "Sex is \(data2.sex ?? "")"
-        }
-        
-        if data2.age == nil {
-            vc.heroAgeLabel.text = "Age is unknown"
-        } else {
-            vc.heroAgeLabel.text = "Age is \(data2.age ?? 2)"
-        }
-
-        if data2.religion == nil {
-            vc.heroReligionLabel.text = "Religion  is unknown"
-        }else {
-            vc.heroReligionLabel.text = "Religion is \(data2.religion ?? "")"
-        }
-
-        if data2.occupation == nil {
-            vc.heroOccupationLabel.text = "Occupation is unknown"
-        }else {
-            vc.heroOccupationLabel.text = "Occupation is \(data2.occupation ?? "")"
-        }
-
-        if data2.hair_color == nil {
-            vc.heroHairColorLabel.text = "Hair color is unknown"
-        } else {
-            vc.heroHairColorLabel.text = "Hair color is \(data2.hair_color ?? "")"
-        }
-        
-        vc.heroImage.contentMode = .scaleAspectFill
+        vc.data = self.massiveIdCharacters[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -200,7 +162,6 @@ extension SearchViewController {
                 DispatchQueue.main.async {
                     
                     self.pageNumber += 1
-                    
                     self.massiveIdCharacters.append(contentsOf: data.data ?? [])
                     self.mainTableView.reloadData()
                     self.pagesNum = data

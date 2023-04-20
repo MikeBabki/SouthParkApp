@@ -20,7 +20,6 @@
 		DDA109E329D2F41E00B2C439 /* CharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109E229D2F41E00B2C439 /* CharactersModel.swift */; };
 		DDA109E529D2F44900B2C439 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109E429D2F44900B2C439 /* URLManager.swift */; };
 		DDA109E929DDB61200B2C439 /* CharacterDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109E829DDB61200B2C439 /* CharacterDescriptionViewController.swift */; };
-		DDA109EB29DDB7DF00B2C439 /* HeroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109EA29DDB7DF00B2C439 /* HeroModel.swift */; };
 		DDA109EE29DDF8A500B2C439 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = DDA109ED29DDF8A500B2C439 /* SDWebImage */; };
 		DDA109F029DDF8A500B2C439 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DDA109EF29DDF8A500B2C439 /* SDWebImageMapKit */; };
 		DDA109F429E4164600B2C439 /* CharacterIdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109F329E4164600B2C439 /* CharacterIdModel.swift */; };
@@ -43,7 +42,6 @@
 		DDA109E229D2F41E00B2C439 /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
 		DDA109E429D2F44900B2C439 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		DDA109E829DDB61200B2C439 /* CharacterDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDescriptionViewController.swift; sourceTree = "<group>"; };
-		DDA109EA29DDB7DF00B2C439 /* HeroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroModel.swift; sourceTree = "<group>"; };
 		DDA109F329E4164600B2C439 /* CharacterIdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterIdModel.swift; sourceTree = "<group>"; };
 		DDC94BD629E86544004C455F /* EpisodeDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDescriptionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				DDA109E229D2F41E00B2C439 /* CharactersModel.swift */,
-				DDA109EA29DDB7DF00B2C439 /* HeroModel.swift */,
 				DDA109F329E4164600B2C439 /* CharacterIdModel.swift */,
 			);
 			path = Models;
@@ -218,7 +215,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDA109EB29DDB7DF00B2C439 /* HeroModel.swift in Sources */,
 				DDA109E029D2F3D000B2C439 /* NetworkManager.swift in Sources */,
 				DDA109DD29D2C2F700B2C439 /* TableViewCell.swift in Sources */,
 				DDA109E929DDB61200B2C439 /* CharacterDescriptionViewController.swift in Sources */,

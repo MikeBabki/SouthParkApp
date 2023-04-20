@@ -12,6 +12,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     static let identifier = "CollectionViewCell"
     
+    // MARK: - UI Components
     private let mainView: UIView = {
         let view = UIView()
         
@@ -25,7 +26,7 @@ class CollectionViewCell: UICollectionViewCell {
     }()
     
     private let episodeNameLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 10)
@@ -35,12 +36,13 @@ class CollectionViewCell: UICollectionViewCell {
         label.alpha = 1
         label.layer.borderColor = UIColor.black.cgColor
         label.layer.borderWidth = 1
+        label.textColor = .white
         return label
         
     }()
     private lazy var randomEpisodeImage: UIImageView = {
         let image = UIImageView()
-    
+        
         image.clipsToBounds = true
         image.backgroundColor = .white
         image.contentMode = .scaleAspectFill
@@ -48,6 +50,7 @@ class CollectionViewCell: UICollectionViewCell {
         
         return image
     }()
+    // MARK: - Configure a cell and constraints
     
     public func configureCollectionCell(image: String, label: String) {
         episodeNameLabel.text = label
@@ -69,10 +72,6 @@ class CollectionViewCell: UICollectionViewCell {
             mainView.widthAnchor.constraint(equalToConstant: 140),
             mainView.heightAnchor.constraint(equalToConstant: 200),
             
-//            randomEpisodeImage.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
-//            randomEpisodeImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
-//            randomEpisodeImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
-//            randomEpisodeImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
             randomEpisodeImage.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 0),
             randomEpisodeImage.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 0),
             randomEpisodeImage.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: 0),
@@ -90,6 +89,6 @@ class CollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
-        }
+        
     }
+}

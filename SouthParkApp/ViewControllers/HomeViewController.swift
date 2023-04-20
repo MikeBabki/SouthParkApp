@@ -10,18 +10,20 @@ import SDWebImage
 
 
 class HomeViewController: UIViewController {
-
-    // MARK: - Private properties (View's)
+    
+    // MARK: - Private properties
+    
     var networkEkz = NetworkManager()
     var massiveEpisodes: [Data] = []
     var pagesNum = DataPark()
     
     private var numberEpisode: Int = 0
     private var pageNum = 1
-
+    
     private lazy var mainView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
         return view
     }()
     
@@ -33,6 +35,7 @@ class HomeViewController: UIViewController {
     }()
     
     // MARK: - Private properties First View
+    
     private lazy var randomEpisodeImage: UIImageView = {
         let image = UIImageView()
         image.clipsToBounds = true
@@ -66,39 +69,45 @@ class HomeViewController: UIViewController {
     
     private lazy var episodesLabel: UILabel = {
         let label = UILabel()
-        
         label.text = "TRENDING EPISODES"
         label.textAlignment = .left
+        label.textColor = .white
         label.font = .systemFont(ofSize: 25)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var collectionViewEpisodes: UICollectionView = {
-
+        
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 140, height: 200)
+        if view.bounds.height <= 700 {
+            layout.itemSize = CGSize(width: 120, height: 150)
+            print("for little screem")
+        } else {
+            layout.itemSize = CGSize(width: 140, height: 200)
+            print("for hight screen")
+        }
+        
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 10
-        
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
         collection.contentMode = .scaleToFill
         collection.showsHorizontalScrollIndicator = false
-
         collection.translatesAutoresizingMaskIntoConstraints = false
         return collection
     }()
     
-    // MARK: - ViewDidLoad
+    // MARK: - LifeCycle - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         setupText()
         loadData()
-        
     }
+    // MARK: - Action
+    
     @objc func watchThisButton() {
         let vc = EpisodeDescriptionViewController()
         vc.data = massiveEpisodes[self.numberEpisode]
@@ -106,7 +115,7 @@ class HomeViewController: UIViewController {
     }
 }
 
-// MARK: - AddSubView's
+// MARK: - AddSubView's - Constraints
 
 extension HomeViewController {
     
@@ -124,10 +133,11 @@ extension HomeViewController {
         
         episodesView.addSubview(episodesLabel)
         episodesView.addSubview(collectionViewEpisodes)
-
+        
         // MARK: - Constraints
         
         NSLayoutConstraint.activate([
+            
             mainView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             mainView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -270),
             mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
@@ -143,10 +153,9 @@ extension HomeViewController {
             randomEpisodeImage.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: 0),
             randomEpisodeImage.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: 0),
             
-            titleHeaderImage.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 0),
+            titleHeaderImage.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 5),
             titleHeaderImage.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
             titleHeaderImage.widthAnchor.constraint(equalToConstant: 170),
-            
             titleHeaderImage.bottomAnchor.constraint(equalTo: randomEpisodeImage.topAnchor, constant: 0),
             
             watchRandomEpisodeButton.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -20),
@@ -166,29 +175,27 @@ extension HomeViewController {
 }
 
 
-// MARK: - Extention's for datasourse and delegate
+// MARK: - Extention's for colelction view datasourse, delegate, animation
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return massiveEpisodes.count
-        
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell {
             let data = self.massiveEpisodes[indexPath.item]
-               UIView.animate(withDuration: 0.5,
-                              animations: {
-                               //Fade-out
-                               cell.alpha = 0.5
-               }) { (completed) in
-                   UIView.animate(withDuration: 0.3,
-                                  animations: {
-                                   //Fade-out
-                                   cell.alpha = 1
-                   })
-               }
+            UIView.animate(withDuration: 0.5,
+                           animations: {
+                //Fade-out
+                cell.alpha = 0.5
+            }) { (completed) in
+                UIView.animate(withDuration: 0.3,
+                               animations: {
+                    //Fade-out
+                    cell.alpha = 1
+                })
+            }
             cell.configureCollectionCell(image: data.thumbnail_url ?? "" , label: data.name ?? "Error")
             cell.backgroundColor = .systemBackground
             return cell
@@ -222,7 +229,7 @@ extension HomeViewController {
     func loadData() {
         networkEkz.getAllEpisodes(pageId: pageNum) { Result in
             switch Result {
-            
+                
             case .success(let data):
                 
                 DispatchQueue.main.async {
@@ -232,7 +239,6 @@ extension HomeViewController {
                     self.massiveEpisodes.append(contentsOf: data.data ?? [])
                     self.randomEpisodeImage.sd_setImage(with: URL(string: self.massiveEpisodes[self.numberEpisode].thumbnail_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
                     self.collectionViewEpisodes.reloadData()
-                    
                 }
             case .failure(_):
                 print("Opa")
@@ -240,5 +246,4 @@ extension HomeViewController {
             }
         }
     }
-    
 }
