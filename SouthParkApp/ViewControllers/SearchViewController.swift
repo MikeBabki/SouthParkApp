@@ -171,7 +171,12 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         //поправить нажатие
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = CharacterDescriptionViewController()
-        vc.data = self.searchCharactersArray[indexPath.row]
+        if searchController.isActive {
+            vc.data = self.searchDataCharacters[indexPath.row]
+        } else {
+            vc.data = self.searchCharactersArray[indexPath.row]
+        }
+//        vc.data = self.searchCharactersArray[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
