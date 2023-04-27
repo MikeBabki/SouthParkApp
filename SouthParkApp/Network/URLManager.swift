@@ -19,4 +19,10 @@ class URLManager {
     static func trendingEpisodesURLCreator(episodePage: Int) -> String {
         return urlString + "/episodes?page=\(episodePage)"
     }
+    static func searchCharacterURL(nameChar: String) -> String {
+        return urlString + "/characters?search=\(nameChar)"
+    }
 }
+
+//https://spapi.dev/api/characters?search=eric
+//https://spapi.dev/api/episodes?page=

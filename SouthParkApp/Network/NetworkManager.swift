@@ -46,4 +46,20 @@ class NetworkManager {
             }
         }.resume()
     }
+    
+    func getFilteredHeroes(arrayAllChar: Int, completion: @escaping (Result< DataIdCharacters, Error>) -> Void) {
+        let url = URL(string: URLManager.characterURLCreator(characterID: arrayAllChar))
+        print(url)
+        URLSession.shared.dataTask(with: url!) { data, _, error in
+            guard let data = data else {
+                return
+            }
+            do {
+                let result = try JSONDecoder().decode(DataIdCharacters.self, from: data)
+                completion(.success(result))
+            } catch {
+                print(error.localizedDescription)
+            }
+        }.resume()
+    }
 }

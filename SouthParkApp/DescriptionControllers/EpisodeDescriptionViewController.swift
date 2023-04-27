@@ -82,7 +82,7 @@ class EpisodeDescriptionViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = UIColor(white: 0.15, alpha: 0.6)
         label.layer.masksToBounds = true
-        label.layer.cornerRadius = 30
+        label.layer.cornerRadius = 20
         label.font = .systemFont(ofSize: 23)
         label.numberOfLines = 0
         return label
@@ -149,6 +149,7 @@ extension EpisodeDescriptionViewController {
             episodeDescriptionLabel.topAnchor.constraint(equalTo: episodeAirDateLabel.bottomAnchor, constant: 20),
             episodeDescriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             episodeDescriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            episodeDescriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -130)
             
         ])
     }

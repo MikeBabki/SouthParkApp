@@ -24,6 +24,7 @@
 		DDA109F029DDF8A500B2C439 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DDA109EF29DDF8A500B2C439 /* SDWebImageMapKit */; };
 		DDA109F429E4164600B2C439 /* CharacterIdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA109F329E4164600B2C439 /* CharacterIdModel.swift */; };
 		DDC94BD729E86544004C455F /* EpisodeDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC94BD629E86544004C455F /* EpisodeDescriptionViewController.swift */; };
+		DDC94BFA29F9945C004C455F /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = DDC94BF929F9945C004C455F /* MBProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDC94BFA29F9945C004C455F /* MBProgressHUD in Frameworks */,
 				DDA109F029DDF8A500B2C439 /* SDWebImageMapKit in Frameworks */,
 				DDA109EE29DDF8A500B2C439 /* SDWebImage in Frameworks */,
 			);
@@ -157,6 +159,7 @@
 			packageProductDependencies = (
 				DDA109ED29DDF8A500B2C439 /* SDWebImage */,
 				DDA109EF29DDF8A500B2C439 /* SDWebImageMapKit */,
+				DDC94BF929F9945C004C455F /* MBProgressHUD */,
 			);
 			productName = SouthParkApp;
 			productReference = DDA109BC29CC848E00B2C439 /* SouthParkApp.app */;
@@ -188,6 +191,7 @@
 			mainGroup = DDA109B329CC848E00B2C439;
 			packageReferences = (
 				DDA109EC29DDF8A500B2C439 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				DDC94BF829F9945C004C455F /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 			);
 			productRefGroup = DDA109BD29CC848E00B2C439 /* Products */;
 			projectDirPath = "";
@@ -445,6 +449,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		DDC94BF829F9945C004C455F /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -457,6 +469,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DDA109EC29DDF8A500B2C439 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
+		};
+		DDC94BF929F9945C004C455F /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDC94BF829F9945C004C455F /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "mbprogresshud",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jdg/MBProgressHUD.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "c843e4c86d320a11552898646effa8000042ab16"
+      }
+    },
+    {
       "identity" : "sdwebimage",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SDWebImage/SDWebImage.git",

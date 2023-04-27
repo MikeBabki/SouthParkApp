@@ -185,17 +185,6 @@ extension HomeViewController: UICollectionViewDataSource {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell {
             let data = self.massiveEpisodes[indexPath.item]
-            UIView.animate(withDuration: 0.5,
-                           animations: {
-                //Fade-out
-                cell.alpha = 0.5
-            }) { (completed) in
-                UIView.animate(withDuration: 0.3,
-                               animations: {
-                    //Fade-out
-                    cell.alpha = 1
-                })
-            }
             cell.configureCollectionCell(image: data.thumbnail_url ?? "" , label: data.name ?? "Error")
             cell.backgroundColor = .systemBackground
             return cell
